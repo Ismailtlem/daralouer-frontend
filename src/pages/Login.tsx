@@ -98,7 +98,7 @@ function Login() {
           gap: '1rem'
         }}>
           <button
-            onClick={handleGoogleLogin}
+            onClick={() => handleGoogleLogin()}
             style={{
               display: 'flex',
               alignItems: 'center',
