@@ -6,7 +6,6 @@ import {
   FileText,
   LayoutDashboard
 } from 'lucide-react';
-import './MainLayout.css';
 
 const MainLayout = () => {
   const location = useLocation();
@@ -16,61 +15,83 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="layout">
-      <nav className="sidebar">
-        <div className="sidebar-header">
-          <img src="/daralouer-icon.png" alt="DaraLouer" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
-          <h1>DarALouer</h1>
+    <div className="flex min-h-screen">
+      <nav className="w-64 bg-gray-900 text-white flex-shrink-0">
+        <div className="flex items-center gap-3 px-6 py-6 border-b border-gray-800">
+          <img src="/daralouer-icon.png" alt="DaraLouer" className="w-8 h-8 object-contain" />
+          <h1 className="text-2xl font-bold">DarALouer</h1>
         </div>
 
-        <div className="nav-links">
+        <div className="p-4 flex flex-col gap-2">
           <Link
             to="/app/donnees-marche"
-            className={`nav-link ${isActive('/app/donnees-marche') ? 'active' : ''}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+              isActive('/app/donnees-marche')
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+            }`}
           >
             <BarChart3 size={20} />
-            <span>Données du Marché</span>
+            <span className="font-medium">Données du Marché</span>
           </Link>
 
-          <div className="nav-section">
-            <div className="nav-section-title">CRM</div>
+          <div className="mt-4">
+            <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              CRM
+            </div>
 
             <Link
               to="/app/crm"
-              className={`nav-link ${isActive('/app/crm') ? 'active' : ''}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive('/app/crm')
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
             >
               <LayoutDashboard size={20} />
-              <span>Tableau de Bord</span>
+              <span className="font-medium">Tableau de Bord</span>
             </Link>
 
             <Link
               to="/app/crm/proprietes"
-              className={`nav-link ${isActive('/app/crm/proprietes') ? 'active' : ''}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive('/app/crm/proprietes')
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
             >
               <Building2 size={20} />
-              <span>Propriétés</span>
+              <span className="font-medium">Propriétés</span>
             </Link>
 
             <Link
               to="/app/crm/locataires"
-              className={`nav-link ${isActive('/app/crm/locataires') ? 'active' : ''}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive('/app/crm/locataires')
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
             >
               <Users size={20} />
-              <span>Locataires</span>
+              <span className="font-medium">Locataires</span>
             </Link>
 
             <Link
               to="/app/crm/locations"
-              className={`nav-link ${isActive('/app/crm/locations') ? 'active' : ''}`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive('/app/crm/locations')
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+              }`}
             >
               <FileText size={20} />
-              <span>Locations</span>
+              <span className="font-medium">Locations</span>
             </Link>
           </div>
         </div>
       </nav>
 
-      <main className="main-content">
+      <main className="flex-1 bg-gray-50 overflow-auto">
         <Outlet />
       </main>
     </div>
